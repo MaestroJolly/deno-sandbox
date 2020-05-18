@@ -107,6 +107,9 @@ export const getDog = ({
 const router = new Router();
 
 router
+  .get('', ({ response }: { response: any })=>{
+    response.body = { hello: 'world' };
+  })
   .get('/dogs', getDogs)
   .get('/dogs/:name', getDog)
   .post('/dogs', addDog)
@@ -117,6 +120,7 @@ router
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+
 
 console.log(`Listening on port: ${PORT}...`);
 
